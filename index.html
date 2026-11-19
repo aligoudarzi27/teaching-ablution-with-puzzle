@@ -3,129 +3,128 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>آموزش وضو با پازل</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="background-pattern"></div>
-    
-    <!-- Main Menu -->
-    <div id="main-menu" class="main-menu">
-        <h1>آموزش وضو با پازل</h1>
+    <div class="background-pattern"></div><!-- Main Menu -->
+<div id="main-menu" class="main-menu">
+    <h1>آموزش وضو با پازل</h1>
+    <div style="text-align: center; font-size: 0.8em; color: var(--primary-color);">کاری از:علی قلی پور گودرزی</div>
+    <div class="menu-buttons">
+        <button id="start-game-btn" class="menu-btn"><i class="fas fa-play"></i> شروع بازی</button>
+        <button id="help-btn" class="menu-btn"><i class="fas fa-question-circle"></i> راهنما</button>
+        <button id="info-btn" class="menu-btn"><i class="fas fa-info-circle"></i></button>
+    </div>
+</div>
+
+<div id="game-container" class="game-container" style="display: none;">
+    <header>
+        <h1 id="game-title">آموزش وضو با پازل</h1>
         <div style="text-align: center; font-size: 0.8em; color: var(--primary-color);">کاری از:علی قلی پور گودرزی</div>
-        <div class="menu-buttons">
-            <button id="start-game-btn" class="menu-btn"><i class="fas fa-play"></i> شروع بازی</button>
-            <button id="help-btn" class="menu-btn"><i class="fas fa-question-circle"></i> راهنما</button>
-            <button id="info-btn" class="menu-btn"><i class="fas fa-info-circle"></i></button>
+        <div class="settings-panel">
+            <div class="font-size-controls">
+                <span>Font Size:</span>
+                <button id="decrease-font" class="font-btn"><i class="fas fa-minus"></i></button>
+                <button id="increase-font" class="font-btn"><i class="fas fa-plus"></i></button>
+            </div>
+            <div class="image-size-controls">
+                <span>Image Size:</span>
+                <button id="decrease-img" class="font-btn"><i class="fas fa-minus"></i></button>
+                <button id="increase-img" class="font-btn"><i class="fas fa-plus"></i></button>
+            </div>
+            <div class="game-size-controls">
+                <span>Game Size:</span>
+                <button id="decrease-game" class="font-btn"><i class="fas fa-minus"></i></button>
+                <button id="increase-game" class="font-btn"><i class="fas fa-plus"></i></button>
+            </div>
+            <div class="lang-switch">
+                <button id="en-btn" class="active">English</button>
+                <button id="fa-btn">Persian</button>
+            </div>
+            <button id="sound-toggle-btn" class="font-btn"><i id="sound-icon" class="fas fa-volume-up"></i></button>
+        </div>
+    </header>
+
+    <div class="level-info">
+        <h2 id="level-title">Level 1</h2>
+        <div class="score-display">
+            <span id="score-label">Score:</span> <span id="score">0</span>
         </div>
     </div>
-    
-    <div id="game-container" class="game-container" style="display: none;">
-        <header>
-            <h1 id="game-title">آموزش وضو با پازل</h1>
-            <div style="text-align: center; font-size: 0.8em; color: var(--primary-color);">کاری از:علی قلی پور گودرزی</div>
-            <div class="settings-panel">
-                <div class="font-size-controls">
-                    <span>Font Size:</span>
-                    <button id="decrease-font" class="font-btn"><i class="fas fa-minus"></i></button>
-                    <button id="increase-font" class="font-btn"><i class="fas fa-plus"></i></button>
-                </div>
-                <div class="image-size-controls">
-                    <span>Image Size:</span>
-                    <button id="decrease-img" class="font-btn"><i class="fas fa-minus"></i></button>
-                    <button id="increase-img" class="font-btn"><i class="fas fa-plus"></i></button>
-                </div>
-                <div class="game-size-controls">
-                    <span>Game Size:</span>
-                    <button id="decrease-game" class="font-btn"><i class="fas fa-minus"></i></button>
-                    <button id="increase-game" class="font-btn"><i class="fas fa-plus"></i></button>
-                </div>
-                <div class="lang-switch">
-                    <button id="en-btn" class="active">English</button>
-                    <button id="fa-btn">Persian</button>
-                </div>
-                <button id="sound-toggle-btn" class="font-btn"><i id="sound-icon" class="fas fa-volume-up"></i></button>
-            </div>
-        </header>
 
-        <div class="level-info">
-            <h2 id="level-title">Level 1</h2>
-            <div class="score-display">
-                <span id="score-label">Score:</span> <span id="score">0</span>
-            </div>
-        </div>
-
-        <div class="game-area">
-            <div class="instruction-area">
-                <p id="instruction">Arrange the Wudu steps in the correct order by dragging the puzzle pieces.</p>
-            </div>
-            
-            <div class="puzzle-board">
-                <div class="source-container" id="source-container"></div>
-                <div class="target-container" id="target-container"></div>
-            </div>
-        </div>
-
-        <div class="controls">
-            <button id="check-btn">Check Order</button>
-            <button id="reset-btn">Reset</button>
-            <button id="next-level-btn" disabled>Next Level</button>
-            <button id="home-btn"><i class="fas fa-home"></i></button>
-        </div>
-
-        <div id="completion-modal" class="modal">
-            <div class="modal-content">
-                <h2 id="completion-title">Excellent!</h2>
-                <p id="completion-message">You've completed the Wudu puzzle correctly!</p>
-                <div id="arranged-steps-container" class="arranged-steps-container"></div>
-                <button id="close-modal-btn">Continue</button>
-            </div>
-        </div>
-
-        <div id="feedback-message" class="feedback-message"></div>
-        
-        <div class="image-info" id="image-info">
-            <h3>Adding Your Own Images</h3>
-            <p>To add real images of wudu steps, place your image files in the project folder and update the 'wuduSteps.js' file to use them.</p>
+    <div class="game-area">
+        <div class="instruction-area">
+            <p id="instruction">Arrange the Wudu steps in the correct order by dragging the puzzle pieces.</p>
         </div>
         
-        <audio id="background-music" loop>
-            <source src="/song.mp3" type="audio/mpeg">
-        </audio>
-        <audio id="success-sound">
-            <source src="/encouragement.mp3" type="audio/mpeg">
-        </audio>
-        <audio id="error-sound">
-            <source src="/wrong.mp3" type="audio/mpeg">
-        </audio>
-    </div>
-
-    <!-- Help Modal -->
-    <div id="help-modal" class="modal">
-        <div class="modal-content help-content">
-            <h2>راهنمای بازی</h2>
-            <img id="guide-image" src="/guide.jpg" alt="Game Guide" style="max-width: 100%; margin-bottom: 15px;">
-            <p>کارت های مراحل وضو را به ترتیب صحیح مرتب کنید. برای انجام این کار، کارت ها را از بالا به پایین بکشید.</p>
-            <button id="close-help-btn">بستن</button>
+        <div class="puzzle-board">
+            <div class="source-container" id="source-container"></div>
+            <div class="target-container" id="target-container"></div>
         </div>
     </div>
 
-    <!-- Info Modal -->
-    <div id="info-modal" class="modal">
-        <div class="modal-content info-content">
-            <h2>درباره بازی</h2>
-            <p>این بازی با هدف آموزش مراحل وضو به کودکان طراحی شده است.</p>
-            <p>کاری از علی قلی پور گودرزی</p>
-            <p>راه ارتباطی: aligoudarzi2727@gmail.com</p>
-            <p>نسخه 1.0</p>
-            <button id="close-info-btn">بستن</button>
+    <div class="controls">
+        <button id="check-btn">Check Order</button>
+        <button id="reset-btn">Reset</button>
+        <button id="next-level-btn" disabled>Next Level</button>
+        <button id="home-btn"><i class="fas fa-home"></i></button>
+    </div>
+
+    <div id="completion-modal" class="modal">
+        <div class="modal-content">
+            <h2 id="completion-title">Excellent!</h2>
+            <p id="completion-message">You've completed the Wudu puzzle correctly!</p>
+            <div id="arranged-steps-container" class="arranged-steps-container"></div>
+            <button id="close-modal-btn">Continue</button>
         </div>
+    </div>
+
+    <div id="feedback-message" class="feedback-message"></div>
+    
+    <div class="image-info" id="image-info">
+        <h3>Adding Your Own Images</h3>
+        <p>To add real images of wudu steps, place your image files in the project folder and update the 'wuduSteps.js' file to use them.</p>
     </div>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    <script src="translations.js"></script>
-    <script src="wuduSteps.js"></script>
-    <script src="game.js"></script>
+    <audio id="background-music" loop>
+        <source src="./song.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="success-sound">
+        <source src="./encouragement.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="error-sound">
+        <source src="./wrong.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<!-- Help Modal -->
+<div id="help-modal" class="modal">
+    <div class="modal-content help-content">
+        <h2>راهنمای بازی</h2>
+        <img id="guide-image" src="./guide.jpg" alt="Game Guide" style="max-width: 100%; margin-bottom: 15px;">
+        <p>کارت های مراحل وضو را به ترتیب صحیح مرتب کنید. برای انجام این کار، کارت ها را از بالا به پایین بکشید.</p>
+        <button id="close-help-btn">بستن</button>
+    </div>
+</div>
+
+<!-- Info Modal -->
+<div id="info-modal" class="modal">
+    <div class="modal-content info-content">
+        <h2>درباره بازی</h2>
+        <p>این بازی با هدف آموزش مراحل وضو به کودکان طراحی شده است.</p>
+        <p>کاری از علی قلی پور گودرزی</p>
+        <p>راه ارتباطی: aligoudarzi2727@gmail.com</p>
+        <p>نسخه 1.0</p>
+        <button id="close-info-btn">بستن</button>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+<script src="./translations.js"></script>
+<script src="./wuduSteps.js"></script>
+<script src="./game.js"></script>
+
 </body>
 </html>
